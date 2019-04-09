@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 
-import Nav from './components/Nav';
+import Nav from './components/nav/Nav';
 import Home from './views/Home';
 
 const App = () => (
