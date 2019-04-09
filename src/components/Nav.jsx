@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from '@emotion/styled';
 
 const Navbar = styled.nav`
@@ -6,7 +6,7 @@ const Navbar = styled.nav`
   top: 0;
   left: 0;
   width: 100%;
-  background-color: #252525;
+  background: linear-gradient(to top, #111, var(--black));
   box-shadow: 0 5px 15px #000;
   min-height: 7vh;
   font-weight: 600;
@@ -30,25 +30,51 @@ const NavLink = styled.a`
   margin-left: 1rem;
   text-decoration: none;
   color: #fafafa;
+
+  transition: all 0.3s;
+
+  &:hover {
+    color: var(--purple);
+  }
 `;
-
-const Nav = () => (
-  <Navbar>
-    <NavList>
-      <li>
-        <NavLink href="#">Games</NavLink>
-      </li>
-      <li>
-        <NavLink href="#">Leagues</NavLink>
-      </li>
-      <li>
-        <NavLink href="#">Login</NavLink>
-      </li>
-      <li>
-        <NavLink href="#">Register</NavLink>
-      </li>
-    </NavList>
-  </Navbar>
-);
-
+const Nav = () => {
+  const [active, setActive] = useState(false);
+  const toggleActive = () => {
+    setActive(!active);
+  };
+  return (
+    <Navbar>
+      {active ? (
+        <NavList>
+          <li>
+            <NavLink onClick={toggleActive} href="#">
+              Games
+            </NavLink>
+          </li>
+          <li>
+            <NavLink href="#" onClick={toggleActive}>
+              Leagues
+            </NavLink>
+          </li>
+          <li>
+            <NavLink href="#" onClick={toggleActive}>
+              Login
+            </NavLink>
+          </li>
+          <li>
+            <NavLink href="#" onClick={toggleActive}>
+              Register
+            </NavLink>
+          </li>
+        </NavList>
+      ) : (
+        <li>
+          <button type="button" onClick={toggleActive}>
+            Click Me
+          </button>
+        </li>
+      )}
+    </Navbar>
+  );
+};
 export default Nav;

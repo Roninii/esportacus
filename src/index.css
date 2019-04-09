@@ -1,3 +1,8 @@
+:root {
+  --black: #252525;
+  --purple: #6200ee;
+}
+
 * {
   margin: 0;
   padding: 0;
