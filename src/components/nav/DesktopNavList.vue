@@ -1,11 +1,11 @@
 <template>
-    <div class="menu-links-list" >
+    <nav class="menu-links-list" >
         <div v-for="path in paths" :key="path.id">
             <button type="button" class="button button-link" @click="toggleActive">
                 <router-link :to="path.path">{{ path.id.toUpperCase() }}</router-link>
             </button>
         </div>
-    </div>
+    </nav>
 </template>
 
 <script lang="ts">

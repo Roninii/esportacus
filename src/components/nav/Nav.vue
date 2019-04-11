@@ -1,8 +1,9 @@
 <template>
-  <nav class="nav">
+  <header class="nav">
+    <span class="title">ESportacus</span>
     <MobileNavList :paths="paths"/>
-    <DesktopNavList :paths="paths" />
-  </nav>
+    <DesktopNavList :paths="paths"/>
+  </header>
 </template>
 
 <script lang='ts'>
@@ -19,23 +20,30 @@ import DesktopNavList from './DesktopNavList.vue';
 })
 export default class Nav extends Vue {
   paths: Array<object> = [
-    { id: 'home', path: '/' },
-    { id: 'games', path: '/games' },
-    { id: 'leagues', path: '/leagues' },
-    { id: 'login', path: '/login' },
-    { id: 'register', path: '/register' },
-  ]
+    { id: `home`, path: `/` },
+    { id: `games`, path: `/games` },
+    { id: `leagues`, path: `/leagues` },
+    { id: `login`, path: `/login` },
+    { id: `register`, path: `/register` },
+  ];
 }
 </script>
 
 <style lang="scss" scoped>
 .nav {
-    background-color: $black;
-    box-shadow: 0 5px 15px #000;
-    height: 7vh;
-    padding: 0 1rem;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
+  background-color: $black;
+  box-shadow: 0 5px 15px #000;
+  height: 5vh;
+  padding: 0 1rem;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.title {
+  color: $white;
+  font-size: 2.2rem;
+  font-weight: 800;
+  margin-right: auto;
+  font-family: roboto;
 }
 </style>

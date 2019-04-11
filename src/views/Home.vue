@@ -1,5 +1,6 @@
 <template>
-  <div class="home"></div>
+  <main class="home">
+  </main>
 </template>
 
 <script lang="ts">
@@ -14,7 +15,8 @@ export default class Home extends Vue {}
 
 <style lang="scss" scoped>
 .home {
-  height: 93vh;
+  height: 95vh;
   background: center/cover url(../assets/bg.jpg);
+
 }
 </style>

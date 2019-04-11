@@ -1,5 +1,5 @@
 <template>
-    <div  :class="isActive ? 'menu-links-list' : ''">
+    <nav  :class="isActive ? 'menu-links-list' : ''">
         <button type="button" class="button" @click="toggleActive" v-if="!isActive">
             <font-awesome-icon icon="bars" size="2x" />
         </button>
@@ -10,7 +10,7 @@
                 </button>
             </div>
         </template>
-    </div>
+    </nav>
 </template>
 
 <script lang="ts">

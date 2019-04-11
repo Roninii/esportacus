@@ -1,13 +1,14 @@
 <template>
   <div id="app">
-    <Nav />
+    <Nav/>
     <router-view/>
   </div>
 </template>
 
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import Vue from 'vue';
+import Component from 'vue-class-component';
 
 import Nav from './components/nav/Nav.vue';
 
@@ -16,9 +17,7 @@ import Nav from './components/nav/Nav.vue';
     Nav,
   },
 })
-export default class App extends Vue {
-
-}
+export default class App extends Vue {}
 </script>
 
 
@@ -32,11 +31,12 @@ body,
 #app {
   box-sizing: border-box;
   height: 100%;
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial,
+    sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-weight: 400;
-  font-smoothing: antialiased;
+  color: $white;
+  text-shadow: 0 2px 2px #000;
 }
-
 </style>
