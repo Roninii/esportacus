@@ -40,14 +40,16 @@ export default class GameCard extends Vue {}
 
   transition: all 0.5s ease-in-out;
   &:hover {
+    cursor: pointer;
     transform: scale(1.1);
     box-shadow: 0 5px 35px #000;
-    z-index: 100;
+    z-index: 1;
     &:before {
       opacity: 0.2;
     }
     img {
       opacity: 1;
+      z-index: 100;
     }
   }
   &:before {
@@ -77,23 +79,4 @@ export default class GameCard extends Vue {}
     }
   }
 }
-// .card-title {
-//   display: flex;
-//   letter-spacing: 0.25rem;
-//   text-align: center;
-//   justify-content: center;
-//   align-content: center;
-//   z-index: 10;
-// }
-// .card-title-text {
-//   color: #fff;
-//   font-size: 2rem;
-//   font-weight: 900;
-//   padding: 30px 0;
-//   text-shadow: 0 2px 0 #000;
-//   opacity: 0;
-//   backface-visibility: hidden;
-
-//   transition: all 0.75s;
-// }
 </style>
