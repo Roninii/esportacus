@@ -7,10 +7,10 @@
 </template>
 
 <script lang='ts'>
-import Vue from 'vue';
-import Component from 'vue-class-component';
-import MobileNavList from './MobileNavList.vue';
-import DesktopNavList from './DesktopNavList.vue';
+import Vue from "vue";
+import Component from "vue-class-component";
+import MobileNavList from "./MobileNavList.vue";
+import DesktopNavList from "./DesktopNavList.vue";
 
 @Component({
   components: {
@@ -33,7 +33,7 @@ export default class Nav extends Vue {
 .nav {
   background-color: $black;
   box-shadow: 0 5px 15px #000;
-  height: 5vh;
+  height: 6vh;
   padding: 0 1rem;
   display: flex;
   justify-content: flex-end;
