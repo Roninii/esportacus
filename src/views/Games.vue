@@ -4,7 +4,13 @@
       <header class="title">
         <h1>Games</h1>
       </header>
-      <GameCard v-for="game in games" :title="game.name" :banner="game.banner" :key="game.id"/>
+      <GameCard
+        v-for="game in games"
+        :logo="game.title"
+        :name="game.name"
+        :banner="game.banner"
+        :key="game.id"
+      />
     </div>
   </main>
 </template>
