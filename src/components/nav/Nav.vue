@@ -1,8 +1,8 @@
 <template>
   <header class="nav">
-    <span class="title">ESportacus</span>
-    <MobileNavList :paths="paths"/>
-    <DesktopNavList :paths="paths"/>
+    <router-link to="/" class="title">ESportacus</router-link>
+    <MobileNavList :paths="paths" />
+    <DesktopNavList :paths="paths" />
   </header>
 </template>
 
@@ -52,5 +52,6 @@ export default class Nav extends Vue {
   font-weight: 800;
   margin-right: auto;
   font-family: roboto;
+  text-decoration: none;
 }
 </style>

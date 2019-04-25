@@ -1,11 +1,16 @@
 <template>
   <main>
-    <div class="container">
-      <Header title="Leagues" />
-      <div v-for="league in leagues" :key="league.id" class="row">
-        <span class="league-name">{{ league.name }}</span>
-        {{ league.videogame.name }}
-      </div>
+    <div class="container" :class="leagues.length ? '' : 'loading'">
+      <template v-if="leagues.length">
+        <Header title="Leagues" />
+        <div v-for="league in leagues" :key="league.id" class="row">
+          <router-link class="league-name" to="">{{ league.name }}</router-link>
+          {{ league.videogame.name }}
+        </div>
+      </template>
+      <template v-else>
+        Loading...
+      </template>
     </div>
   </main>
 </template>
@@ -22,7 +27,7 @@ import Header from "../layouts/Header.vue";
   },
 })
 export default class Leagues extends Vue {
-  leaguesURL = `https://api.pandascore.co/leagues?token=Svkm0PUE2PwoSGBOjwKz3dxEb1TLfnWexGZRFCO1F2pmkdSHmNU`;
+  leaguesURL = `https://api.pandascore.co/leagues?per_page=20&token=Svkm0PUE2PwoSGBOjwKz3dxEb1TLfnWexGZRFCO1F2pmkdSHmNU`;
 
   leagues: Array<any>;
 
@@ -47,7 +52,7 @@ header {
   justify-self: center;
 
   @media screen and (max-width: 800px) {
-    width: 100%;
+    width: 75%;
   }
 }
 .container {
@@ -55,19 +60,37 @@ header {
   grid-gap: 1rem 0;
   grid-template-rows: 2fr;
   grid-auto-rows: minmax(1rem, 2.5rem);
+  padding-bottom: 10px;
+
+  @media screen and (min-width: 800px) {
+    font-size: 1.2rem;
+    max-width: 50rem;
+    margin: 0 auto;
+    jusity-content: center;
+  }
 }
 .row {
   height: 100%;
   display: flex;
   justify-content: space-between;
-  padding: 0 1rem;
   align-items: center;
+  padding: 0 0.25rem;
+  font-weight: 500;
 
   &:nth-child(even) {
     background-color: rgba($purple, 0.3);
   }
+
+  &:hover {
+    color: $teal;
+  }
 }
 .league-name {
   width: 75%;
+  text-decoration: none;
+  color: inherit;
+}
+.loading {
+  height: 90vh;
 }
 </style>

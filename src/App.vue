@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <Nav/>
-    <router-view/>
+    <Nav />
+    <router-view />
   </div>
 </template>
 
@@ -30,8 +30,8 @@ html,
 body,
 #app {
   box-sizing: border-box;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial,
-    sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-weight: 400;
