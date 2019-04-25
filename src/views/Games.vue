@@ -1,9 +1,7 @@
 <template>
   <main>
     <div class="games-grid">
-      <header class="title">
-        <h1>Games</h1>
-      </header>
+      <Header title="Games"/>
       <GameCard
         v-for="game in games"
         :logo="game.title"
@@ -16,14 +14,16 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue';
-import Component from 'vue-class-component';
+import Vue from "vue";
+import Component from "vue-class-component";
 
-import { Games, Game } from '@/games';
-import GameCard from '../components/games/GameCard.vue';
+import { Games, Game } from "@/games";
+import GameCard from "../components/games/GameCard.vue";
+import Header from "../layouts/Header.vue";
 
 @Component({
   components: {
+    Header,
     GameCard,
   },
 })
@@ -39,7 +39,6 @@ export default class name extends Vue {
 
 <style lang="scss" scoped>
 main {
-  background: linear-gradient(to bottom left, $purple, $bg);
   overflow: hidden;
 }
 .games-grid {
@@ -53,14 +52,5 @@ main {
   @media screen and (min-width: 800px) {
     grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
   }
-}
-.title {
-  margin: 20px 0;
-  grid-column: 1 / -1;
-  font-weight: 700;
-  text-align: center;
-  font-size: 3rem;
-  letter-spacing: 0.5rem;
-  border-bottom: 1px solid $teal;
 }
 </style>
