@@ -7,10 +7,10 @@
 
 
 <script lang="ts">
-import Vue from 'vue';
-import Component from 'vue-class-component';
+import Vue from "vue";
+import Component from "vue-class-component";
 
-import Nav from './components/nav/Nav.vue';
+import Nav from "./components/nav/Nav.vue";
 
 @Component({
   components: {
@@ -30,13 +30,13 @@ html,
 body,
 #app {
   box-sizing: border-box;
-  height: 100%;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial,
-    sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial,
+    sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-weight: 400;
   color: $white;
   text-shadow: 0 2px 2px #000;
+  background: no-repeat linear-gradient(to bottom left, $purple, $bg);
 }
 </style>

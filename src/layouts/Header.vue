@@ -1,0 +1,28 @@
+<template>
+  <header class="title">
+    <h1>{{title}}</h1>
+  </header>
+</template>
+
+<script lang="ts">
+import Vue from "vue";
+import Component from "vue-class-component";
+
+@Component({
+  props: {
+    title: String,
+  },
+})
+export default class Header extends Vue {}
+</script>
+
+<style lang="scss" scoped>
+.title {
+  margin: 20px 0;
+  grid-column: 1 / -1;
+  font-weight: 700;
+  text-align: center;
+  font-size: 3rem;
+  letter-spacing: 0.5rem;
+}
+</style>
