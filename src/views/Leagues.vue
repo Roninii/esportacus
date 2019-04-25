@@ -1,8 +1,11 @@
 <template>
   <main>
-    <Header title="Leagues" />
-    <div v-for="league in leagues" :key="league.id">
-      {{ league.name }} | {{ league.videogame.name }}
+    <div class="container">
+      <Header title="Leagues" />
+      <div v-for="league in leagues" :key="league.id" class="row">
+        <span class="league-name">{{ league.name }}</span>
+        {{ league.videogame.name }}
+      </div>
     </div>
   </main>
 </template>
@@ -39,7 +42,32 @@ export default class Leagues extends Vue {
 </script>
 
 <style lang="scss" scoped>
-main {
-  height: 93vh;
+header {
+  width: 40rem;
+  justify-self: center;
+
+  @media screen and (max-width: 800px) {
+    width: 100%;
+  }
+}
+.container {
+  display: grid;
+  grid-gap: 1rem 0;
+  grid-template-rows: 2fr;
+  grid-auto-rows: minmax(1rem, 2.5rem);
+}
+.row {
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 1rem;
+  align-items: center;
+
+  &:nth-child(even) {
+    background-color: rgba($purple, 0.3);
+  }
+}
+.league-name {
+  width: 75%;
 }
 </style>

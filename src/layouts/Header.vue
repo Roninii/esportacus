@@ -19,6 +19,7 @@ export default class Header extends Vue {}
 <style lang="scss" scoped>
 .title {
   margin: 20px 0;
+  border-bottom: 1px solid $teal;
   grid-column: 1 / -1;
   font-weight: 700;
   text-align: center;
