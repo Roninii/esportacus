@@ -1,11 +1,8 @@
 <template>
   <main>
-    <Header title="Leagues"/>
+    <Header title="Leagues" />
     <div v-for="league in leagues" :key="league.id">
-      <template v-if="league.image_url">
-        <img :src="league.image_url">
-      </template>
-      <template v-else>{{ league.name }}</template>
+      {{ league.name }} | {{ league.videogame.name }}
     </div>
   </main>
 </template>
@@ -22,7 +19,7 @@ import Header from "../layouts/Header.vue";
   },
 })
 export default class Leagues extends Vue {
-  leaguesURL = ``;
+  leaguesURL = `https://api.pandascore.co/leagues?token=Svkm0PUE2PwoSGBOjwKz3dxEb1TLfnWexGZRFCO1F2pmkdSHmNU`;
 
   leagues: Array<any>;
 

@@ -1,6 +1,6 @@
 <template>
   <header class="title">
-    <h1>{{title}}</h1>
+    <h1>{{ title }}</h1>
   </header>
 </template>
 
@@ -24,5 +24,10 @@ export default class Header extends Vue {}
   text-align: center;
   font-size: 3rem;
   letter-spacing: 0.5rem;
+}
+@media screen and (max-width: 500px) {
+  .title {
+    font-size: 2rem;
+  }
 }
 </style>

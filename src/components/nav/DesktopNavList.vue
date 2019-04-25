@@ -1,16 +1,16 @@
 <template>
   <nav class="menu-links-list">
     <div v-for="path in paths" :key="path.id">
-      <button type="button" class="button button-link">
-        <router-link :to="path.path">{{ path.id.toUpperCase() }}</router-link>
-      </button>
+      <router-link class="button button__link" :to="path.path">{{
+        path.id.toUpperCase()
+      }}</router-link>
     </div>
   </nav>
 </template>
 
 <script lang="ts">
-import Component from 'vue-class-component';
-import Vue from 'vue';
+import Component from "vue-class-component";
+import Vue from "vue";
 
 @Component({
   props: {
@@ -24,7 +24,7 @@ export default class DesktopNavList extends Vue {}
 .button {
   border: none;
   background: none;
-  &.button-link {
+  &.button__link {
     padding: 0.25rem 0;
   }
 }
