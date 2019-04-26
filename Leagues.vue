@@ -125,8 +125,6 @@ header {
   grid-auto-rows: minmax(1rem, 2.5rem);
   padding-bottom: 10px;
 
-  overflow: hidden;
-
   @media screen and (min-width: 800px) {
     font-size: 1.2rem;
     max-width: 50rem;

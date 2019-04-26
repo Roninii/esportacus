@@ -68,6 +68,7 @@ svg {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
+  z-index: 100;
 }
 a {
   text-decoration: none;

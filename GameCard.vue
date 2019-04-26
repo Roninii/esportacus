@@ -2,15 +2,15 @@
   <button
     class="card"
     key="key"
-    :style="{background: `no-repeat center/cover url(${banner}), #000`}"
+    :style="{ background: `no-repeat center/cover url(${banner}), #000` }"
   >
-    <img v-if="logo" :src="logo" alt="name">
+    <img v-if="logo" :src="logo" alt="name" />
   </button>
 </template>
 
 <script lang="ts">
-import Vue from 'vue';
-import Component from 'vue-class-component';
+import Vue from "vue";
+import Component from "vue-class-component";
 
 @Component({
   props: {
@@ -49,10 +49,11 @@ export default class GameCard extends Vue {}
     }
     img {
       opacity: 1;
+      z-index: 10;
     }
   }
   &:before {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     left: 0;
@@ -68,7 +69,6 @@ export default class GameCard extends Vue {}
     }
   }
   & img {
-    z-index: 100;
     width: 50%;
     opacity: 0;
     backface-visibility: hidden;
