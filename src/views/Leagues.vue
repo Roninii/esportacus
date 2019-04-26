@@ -7,6 +7,14 @@
           <router-link class="league-name" to="">{{ league.name }}</router-link>
           {{ league.videogame.name }}
         </div>
+        <Pagination
+          :current="currentPage"
+          :perPage="perPage"
+          :pages="totalPages"
+          @first="goFirst"
+          @last="goLast"
+          @go-to="goTo"
+        />
       </template>
       <template v-else>
         Loading...
@@ -19,34 +27,90 @@
 import Vue from "vue";
 import Component from "vue-class-component";
 
+import axios from "axios";
+
 import Header from "../layouts/Header.vue";
+import Pagination from "@/components/Pagination.vue";
 
 @Component({
   components: {
     Header,
+    Pagination,
   },
 })
 export default class Leagues extends Vue {
-  leaguesURL = `https://api.pandascore.co/leagues?per_page=20&token=Svkm0PUE2PwoSGBOjwKz3dxEb1TLfnWexGZRFCO1F2pmkdSHmNU`;
+  leaguesURL = `https://api.pandascore.co/leagues`;
 
   leagues: Array<any>;
+
+  currentPage: number;
+
+  totalResults: number;
+
+  perPage: number;
+
+  totalPages: number;
+
+  secret: string;
+
+  // currentView: string;
 
   constructor() {
     super();
     this.leagues = [];
+    this.currentPage = 1;
+    this.totalResults = 0;
+    this.perPage = 20;
+    this.totalPages = 0;
+    this.secret = `Svkm0PUE2PwoSGBOjwKz3dxEb1TLfnWexGZRFCO1F2pmkdSHmNU`;
+    // this.currentView = `${this.leaguesURL}?page=${this.currentPage}&per_page=${
+    //   this.perPage
+    // }&token=${this.secret}`;
   }
 
   mounted() {
-    fetch(this.leaguesURL)
-      .then(res => res.json())
-      .then(data => {
-        this.leagues = data;
-      });
+    this.fetchLeagues(this.currentView);
+  }
+
+  fetchLeagues(currentView: any) {
+    axios.get(currentView).then(res => {
+      this.leagues = res.data;
+      this.currentPage = parseInt(res.headers[`x-page`], 10);
+      this.totalResults = parseInt(res.headers[`x-total`], 10);
+      this.perPage = parseInt(res.headers[`x-per-page`], 10);
+
+      this.totalPages = Math.round(this.totalResults / this.perPage);
+    });
+  }
+
+  goFirst() {
+    this.currentPage = 1;
+    console.log(this.currentView);
+    return this.currentView;
+  }
+
+  goLast() {
+    this.currentPage = this.totalPages;
+    return this.currentView;
+  }
+
+  goTo(page: number) {
+    this.currentPage = page;
+    return this.currentView;
+  }
+
+  get currentView() {
+    return this.fetchLeagues(
+      `${this.leaguesURL}?page=${this.currentPage}&per_page=${this.perPage}&token=${this.secret}`,
+    );
   }
 }
 </script>
 
 <style lang="scss" scoped>
+main {
+  min-height: 93vh;
+}
 header {
   width: 40rem;
   justify-self: center;
@@ -76,13 +140,20 @@ header {
   align-items: center;
   padding: 0 0.25rem;
   font-weight: 500;
+  padding: 0.25rem;
+  border-radius: 0.25rem;
+  box-shadow: 0 0 10px #111;
+
+  transition: all 0.3s ease-in;
 
   &:nth-child(even) {
     background-color: rgba($purple, 0.3);
   }
 
   &:hover {
-    color: $teal;
+    background: rgba($teal, 0.9);
+    transform: scale(1.1);
+    cursor: pointer;
   }
 }
 .league-name {
