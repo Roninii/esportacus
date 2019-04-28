@@ -79,7 +79,7 @@ export default class Leagues extends Vue {
             .get(currentView, {
                 headers: {
                     Authorization:
-                        "Svkm0PUE2PwoSGBOjwKz3dxEb1TLfnWexGZRFCO1F2pmkdSHmNU",
+                        "Bearer Svkm0PUE2PwoSGBOjwKz3dxEb1TLfnWexGZRFCO1F2pmkdSHmNU",
                 },
             })
             .then(res => {
