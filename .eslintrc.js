@@ -5,16 +5,7 @@ module.exports = {
   },
   extends: ["plugin:vue/essential", "@vue/airbnb", "@vue/typescript"],
   rules: {
-    // "comma-dangle": [
-    //   "warn",
-    //   {
-    //     arrays: "always",
-    //     objects: "always",
-    //     imports: "never",
-    //     exports: "never",
-    //     functions: "always",
-    //   },
-    // ],
+    "arrow-parens": ['off'],
     quotes: ["warn", "backtick"],
     "no-console": process.env.NODE_ENV === "production" ? "error" : "off",
     "no-debugger": process.env.NODE_ENV === "production" ? "error" : "off",
