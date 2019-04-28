@@ -72,7 +72,7 @@ export default class Leagues extends Vue {
     fetchLeagues(currentView: any) {
         fetch(currentView, {
             method: "GET",
-            mode: "cors",
+            mode: "no-cors",
         })
             .then(res => res.json())
             .then(data => console.log(data));
