@@ -55,8 +55,6 @@ export default class Leagues extends Vue {
 
     secret: string;
 
-    // currentView: string;
-
     constructor() {
         super();
         this.leagues = [];
@@ -65,9 +63,6 @@ export default class Leagues extends Vue {
         this.perPage = 20;
         this.totalPages = 0;
         this.secret = `Svkm0PUE2PwoSGBOjwKz3dxEb1TLfnWexGZRFCO1F2pmkdSHmNU`;
-        // this.currentView = `${this.leaguesURL}?page=${this.currentPage}&per_page=${
-        //   this.perPage
-        // }&token=${this.secret}`;
     }
 
     mounted() {
@@ -78,8 +73,7 @@ export default class Leagues extends Vue {
         axios
             .get(currentView, {
                 headers: {
-                    Authorization:
-                        "Bearer Svkm0PUE2PwoSGBOjwKz3dxEb1TLfnWexGZRFCO1F2pmkdSHmNU",
+                    "Access-Control-Allow-Headers": "*",
                 },
             })
             .then(res => {
@@ -109,16 +103,12 @@ export default class Leagues extends Vue {
     }
 
     get currentView() {
-        return this.fetchLeagues(`https://esportacus.netlify.com/api/leagues`);
+        return this.fetchLeagues(
+            `${this.leaguesURL}?page=${this.currentPage}&per_page=${
+                this.perPage
+            }&token=${this.secret}`,
+        );
     }
-
-    // get currentView() {
-    //     return this.fetchLeagues(
-    //         `${this.leaguesURL}?page=${this.currentPage}&per_page=${
-    //             this.perPage
-    //         }&token=${this.secret}`,
-    //     );
-    // }
 }
 </script>
 
