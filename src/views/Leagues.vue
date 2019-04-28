@@ -75,14 +75,21 @@ export default class Leagues extends Vue {
     }
 
     fetchLeagues(currentView: any) {
-        axios.get(currentView).then(res => {
-            this.leagues = res.data;
-            this.currentPage = parseInt(res.headers[`x-page`], 10);
-            this.totalResults = parseInt(res.headers[`x-total`], 10);
-            this.perPage = parseInt(res.headers[`x-per-page`], 10);
+        axios
+            .get(currentView, {
+                headers: {
+                    Authorization:
+                        "Svkm0PUE2PwoSGBOjwKz3dxEb1TLfnWexGZRFCO1F2pmkdSHmNU",
+                },
+            })
+            .then(res => {
+                this.leagues = res.data;
+                this.currentPage = parseInt(res.headers[`x-page`], 10);
+                this.totalResults = parseInt(res.headers[`x-total`], 10);
+                this.perPage = parseInt(res.headers[`x-per-page`], 10);
 
-            this.totalPages = Math.round(this.totalResults / this.perPage);
-        });
+                this.totalPages = Math.round(this.totalResults / this.perPage);
+            });
     }
 
     goFirst() {
@@ -102,12 +109,16 @@ export default class Leagues extends Vue {
     }
 
     get currentView() {
-        return this.fetchLeagues(
-            `${this.leaguesURL}?page=${this.currentPage}&per_page=${
-                this.perPage
-            }&token=${this.secret}`,
-        );
+        return this.fetchLeagues(`https://esportacus.netlify.com/api/leagues`);
     }
+
+    // get currentView() {
+    //     return this.fetchLeagues(
+    //         `${this.leaguesURL}?page=${this.currentPage}&per_page=${
+    //             this.perPage
+    //         }&token=${this.secret}`,
+    //     );
+    // }
 }
 </script>
 
