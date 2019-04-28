@@ -70,20 +70,24 @@ export default class Leagues extends Vue {
     }
 
     fetchLeagues(currentView: any) {
-        axios
-            .get(currentView, {
-                headers: {
-                    "Access-Control-Allow-Headers": "*",
-                },
-            })
-            .then(res => {
-                this.leagues = res.data;
-                this.currentPage = parseInt(res.headers[`x-page`], 10);
-                this.totalResults = parseInt(res.headers[`x-total`], 10);
-                this.perPage = parseInt(res.headers[`x-per-page`], 10);
+        fetch(currentView, {
+            method: "GET",
+            mode: "cors",
+        })
+            .then(res => res.json())
+            .then(data => console.log(data));
+        // axios
+        //     .get(currentView, {
+        //         mode:
+        //     })
+        //     .then(res => {
+        //         this.leagues = res.data;
+        //         this.currentPage = parseInt(res.headers[`x-page`], 10);
+        //         this.totalResults = parseInt(res.headers[`x-total`], 10);
+        //         this.perPage = parseInt(res.headers[`x-per-page`], 10);
 
-                this.totalPages = Math.round(this.totalResults / this.perPage);
-            });
+        //         this.totalPages = Math.round(this.totalResults / this.perPage);
+        //     });
     }
 
     goFirst() {
