@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/precache-manifest.d0c2fc29b6fce68d8542ef8895f2d580.js"
+  "/precache-manifest.8a8fcc3066faa8320519175b7589ff12.js"
 );
 
 workbox.core.setCacheNameDetails({prefix: "esportacus-vue"});
