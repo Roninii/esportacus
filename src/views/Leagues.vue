@@ -2,12 +2,10 @@
   <main>
     <div class="container" :class="leagues.length ? '' : 'loading'">
       <template v-if="leagues.length">
-        <Header title="Leagues"/>
+        <Header title="Leagues" />
         <div v-for="league in leagues" :key="league.id" class="row">
           <router-link class="league-name" to>
-            {{
-            league.name
-            }}
+            {{ league.name }}
           </router-link>
           {{ league.videogame.name }}
         </div>
@@ -20,7 +18,9 @@
           @go-to="goTo"
         />
       </template>
-      <template v-else>Loading...</template>
+      <template v-else>
+        Loading...
+      </template>
     </div>
   </main>
 </template>
@@ -41,10 +41,6 @@ import Pagination from "@/components/Pagination.vue";
   },
 })
 export default class Leagues extends Vue {
-  corsAnywhere = `https://cors-anywhere.herokuapp.com/`;
-
-  leaguesURL = `https://api.pandascore.co/leagues`;
-
   leagues: Array<any>;
 
   currentPage: number;
@@ -55,8 +51,6 @@ export default class Leagues extends Vue {
 
   totalPages: number;
 
-  secret: string;
-
   constructor() {
     super();
     this.leagues = [];
@@ -64,7 +58,6 @@ export default class Leagues extends Vue {
     this.totalResults = 0;
     this.perPage = 20;
     this.totalPages = 0;
-    this.secret = `Svkm0PUE2PwoSGBOjwKz3dxEb1TLfnWexGZRFCO1F2pmkdSHmNU`;
   }
 
   mounted() {
@@ -73,10 +66,10 @@ export default class Leagues extends Vue {
 
   fetchLeagues(currentView: any) {
     axios.get(currentView).then(res => {
-      this.leagues = res.data;
-      this.currentPage = parseInt(res.headers[`x-page`], 10);
-      this.totalResults = parseInt(res.headers[`x-total`], 10);
-      this.perPage = parseInt(res.headers[`x-per-page`], 10);
+      this.leagues = res.data.data;
+      this.currentPage = parseInt(res.data[`current-page`], 10);
+      this.totalResults = parseInt(res.data[`total-results`], 10);
+      this.perPage = parseInt(res.data[`per-page`], 10);
 
       this.totalPages = Math.round(this.totalResults / this.perPage);
     });
@@ -99,11 +92,7 @@ export default class Leagues extends Vue {
   }
 
   get currentView() {
-    return this.fetchLeagues(
-      `${this.corsAnywhere}${this.leaguesURL}?page=${
-        this.currentPage
-      }&per_page=${this.perPage}&token=${this.secret}`,
-    );
+    return this.fetchLeagues("/.netlify/functions/getleagues");
   }
 }
 </script>
