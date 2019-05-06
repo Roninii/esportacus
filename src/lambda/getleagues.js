@@ -1,9 +1,7 @@
 const axios = require(`axios`);
 
 exports.handler = (event, context, callback) => {
-  // const { API_URL, TOKEN } = process.env;
-  const API_URL = `https://api.pandascore.co`;
-  const TOKEN = `Svkm0PUE2PwoSGBOjwKz3dxEb1TLfnWexGZRFCO1F2pmkdSHmNU`;
+  const { API_URL, TOKEN } = process.env;
 
   const QUERY = `/leagues`;
   const URL = `${API_URL}${QUERY}?token=${TOKEN}`;
